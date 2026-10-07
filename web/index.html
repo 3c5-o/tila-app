@@ -261,7 +261,7 @@
     var host=el(target);host.innerHTML="";
     Object.keys(templates).forEach(function(k){
       var t=templates[k],btn=document.createElement("button");
-      if(clickMode==="card"){btn.className="template-card";btn.innerHTML='<div class="art" style="--glow:'+t.soft+'"></div><div class="copy"><b>'+t.name+'</b><small>قالب تِلا</small></div>';btn.onclick=function(){state.template=k;state.accent=t.accent;openWizard();nextStep(3)}}
+      if(clickMode==="card"){btn.className="template-card";btn.innerHTML='<div class="art" style="--glow:'+t.soft+'"></div><div class="copy"><b>'+t.name+'</b><small>قالب تِلا</small></div>';btn.onclick=function(){state.template=k;state.accent=t.accent;openWizard()}}
       else{btn.className="preset"+(state.template===k?" on":"");btn.innerHTML="<b>"+t.name+"</b>";btn.onclick=function(){state.template=k;state.accent=t.accent;el("accentColor").value=t.accent;templateCards("editorTemplates","preset");templateCards("wizardTemplates","preset");renderPage()}}
       host.appendChild(btn);
     });
