@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#07110d">
+  <meta name="description" content="تِلا — مولد تصاميم التلاوات القرآنية">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./assets/icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Noto+Kufi+Arabic:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>تِلا</title>
+  <style>
+    :root{--bg:#07100c;--surface:#0d1712;--surface2:#111f18;--line:#20372b;--text:#f5f8f6;--muted:#91a79a;--accent:#20f27a;--gold:#f1c86a;--danger:#ff6b6b;--radius:22px}
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:radial-gradient(circle at 80% -10%,#143825 0,transparent 35%),var(--bg);color:var(--text);font-family:"Noto Kufi Arabic",system-ui,sans-serif}
+    body{min-height:100vh;overflow-x:hidden}button,input,select{font:inherit}.hidden{display:none!important}
+    .splash{position:fixed;inset:0;z-index:100;background:radial-gradient(circle at 50% 30%,#153c28,#06100b 58%,#030805);display:grid;place-items:center;transition:.45s}
+    .splash.done{opacity:0;visibility:hidden}.splash-card{text-align:center}.splash-logo{width:118px;height:118px;filter:drop-shadow(0 0 28px #18ff7a55)}.splash h1{font-size:42px;margin:16px 0 3px;color:#f2d37f}.splash p{margin:0;color:#a4b8ab}
+    .app{max-width:1200px;margin:auto;padding:18px 18px 104px}.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:12px 4px 16px;background:linear-gradient(#07100cf2 65%,transparent);backdrop-filter:blur(12px)}
+    .brand{display:flex;align-items:center;gap:10px}.brand img{width:42px;height:42px}.brand strong{font-size:25px;color:#f4d176}.brand small{display:block;color:var(--muted);font-size:10px}
+    .icon-btn,.ghost-btn,.primary-btn,.chip{border:1px solid var(--line);background:#0d1812;color:var(--text);border-radius:14px;min-height:46px;padding:0 16px;cursor:pointer}
+    .icon-btn{width:46px;padding:0;display:grid;place-items:center}.primary-btn{background:linear-gradient(135deg,#13d966,#28ff88);color:#031108;border:0;font-weight:800;box-shadow:0 8px 28px #12ea6a30}.primary-btn:active,.ghost-btn:active,.icon-btn:active{transform:scale(.985)}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;margin-top:8px}.hero-main{position:relative;min-height:260px;padding:28px;border:1px solid #1d4933;border-radius:30px;overflow:hidden;background:radial-gradient(circle at 15% 0,#174d31 0,transparent 45%),linear-gradient(145deg,#0a1911,#07100c)}
+    .hero-main:after{content:"";position:absolute;inset:auto -60px -110px auto;width:280px;height:280px;border:1px solid #20f27a26;border-radius:50%;box-shadow:0 0 80px #20f27a18 inset}
+    .eyebrow{color:var(--accent);font-weight:700;font-size:12px}.hero h2{font-size:36px;line-height:1.35;margin:10px 0 8px}.hero p{color:#a8baaf;max-width:620px;line-height:2}.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+    .hero-side{border:1px solid var(--line);border-radius:30px;background:linear-gradient(180deg,#101b16,#09110d);padding:18px;display:flex;flex-direction:column;justify-content:space-between}.mini-stat{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #21352b}.mini-stat:last-child{border-bottom:0}.mini-stat b{color:var(--accent)}
+    .section{margin-top:26px}.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.section-head h3{margin:0;font-size:20px}.section-head button{color:var(--accent);background:none;border:0}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.feature{padding:18px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,#0f1a15,#0a120f)}.feature i{width:42px;height:42px;border-radius:14px;background:#173424;color:var(--accent);display:grid;place-items:center;font-style:normal;margin-bottom:12px}.feature h4{margin:0 0 5px}.feature p{margin:0;color:var(--muted);font-size:12px;line-height:1.8}
+    .template-row,.project-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.template-card{aspect-ratio:4/5;position:relative;overflow:hidden;border-radius:20px;border:1px solid #284233;background:#0d1712;cursor:pointer}.template-card .art{position:absolute;inset:0;background:radial-gradient(circle at 70% 20%,var(--glow,#1d6f43),transparent 45%),linear-gradient(160deg,#132019,#030605 72%)}.template-card .art:before{content:"۞";position:absolute;inset:18px;color:#f1ce7766;font-size:64px}.template-card .copy{position:absolute;right:15px;left:15px;bottom:15px}.template-card b{display:block;font-size:16px}.template-card small{color:#abb8b0}
+    .bottom-nav{position:fixed;z-index:25;bottom:0;left:0;right:0;margin:auto;max-width:620px;background:#0b1510ee;border:1px solid #25372f;border-bottom:0;border-radius:24px 24px 0 0;backdrop-filter:blur(18px);display:grid;grid-template-columns:repeat(4,1fr);padding:7px max(8px,env(safe-area-inset-right)) calc(7px + env(safe-area-inset-bottom))}
+    .nav-btn{background:none;border:0;color:#8ca096;min-height:58px;border-radius:16px;cursor:pointer}.nav-btn.active{background:#173424;color:var(--accent)}.nav-btn span{display:block;font-size:18px}.nav-btn small{font-size:10px}
+    .view{display:none}.view.active{display:block}.empty{border:1px dashed #294637;border-radius:24px;padding:36px;text-align:center;color:var(--muted)}
+    .project-card{border:1px solid var(--line);background:#0c1711;border-radius:20px;overflow:hidden}.project-thumb{aspect-ratio:4/5;background:linear-gradient(135deg,#1b4b31,#070a08);display:grid;place-items:center;color:#f4d176;font-size:30px}.project-meta{padding:12px}.project-meta b{display:block}.project-meta small{color:var(--muted)}.project-actions{display:flex;gap:6px;margin-top:10px}.project-actions button{flex:1;min-height:36px;border:1px solid var(--line);border-radius:10px;background:#111f18;color:#fff}
+    .sheet{position:fixed;inset:0;z-index:60;background:#0009;backdrop-filter:blur(8px);display:grid;place-items:end center}.sheet-panel{width:min(760px,100%);max-height:94vh;overflow:auto;background:linear-gradient(180deg,#101c16,#07100c);border:1px solid #244132;border-radius:28px 28px 0 0;padding:18px 18px calc(20px + env(safe-area-inset-bottom));box-shadow:0 -30px 80px #0008}.sheet-top{display:flex;align-items:center;justify-content:space-between;position:sticky;top:-18px;background:#101c16ee;padding:14px 0;z-index:3}.sheet-top h3{margin:0}.stepper{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:6px 0 18px}.step{height:4px;border-radius:8px;background:#26392f}.step.on{background:var(--accent)}
+    .form-grid{display:grid;gap:12px}.field label{display:block;color:#b9c8bf;font-size:12px;margin:0 0 7px}.field input,.field select{width:100%;height:50px;border-radius:14px;border:1px solid #294136;background:#0a1510;color:#fff;padding:0 14px;outline:none}.field input:focus,.field select:focus{border-color:var(--accent);box-shadow:0 0 0 3px #20f27a15}
+    .upload{border:1px dashed #3a5d49;border-radius:22px;min-height:210px;display:grid;place-items:center;overflow:hidden;position:relative;background:#0b1510}.upload img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.upload .placeholder{position:relative;text-align:center;color:var(--muted)}.upload input{position:absolute;inset:0;opacity:0;cursor:pointer}
+    .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.verse-preview{font-family:"Amiri Quran",serif;font-size:25px;line-height:2.15;background:#09110d;border:1px solid #223b2f;padding:18px;border-radius:18px;max-height:250px;overflow:auto}.notice{padding:11px 13px;border-radius:14px;background:#14271c;color:#a9c7b5;font-size:12px}.danger{color:#ffaaaa}
+    .editor{position:fixed;inset:0;z-index:70;background:#06100b;display:grid;grid-template-columns:minmax(320px,1fr) minmax(340px,470px)}.editor-stage{padding:18px;overflow:auto;display:flex;flex-direction:column;align-items:center}.editor-head{width:100%;display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.canvas-wrap{width:min(100%,620px);display:grid;place-items:center;min-height:0}.canvas-wrap canvas{max-width:100%;max-height:calc(100vh - 170px);border-radius:18px;box-shadow:0 20px 80px #0009;background:#111}.thumbs{display:flex;gap:8px;margin-top:12px;max-width:100%;overflow:auto;padding:3px}.thumbs button{min-width:66px;height:78px;border-radius:12px;border:1px solid #30443a;background:#0d1812;color:#fff}.thumbs button.on{border-color:var(--accent);box-shadow:0 0 0 2px #20f27a20}
+    .editor-panel{border-right:1px solid #23392e;background:#0b1510;padding:18px;overflow:auto}.tool-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.tool-tab{height:44px;border:1px solid #253b30;border-radius:12px;background:#101c16;color:#a8b6af}.tool-tab.on{background:#173c27;color:var(--accent);border-color:#2f6d49}.tool-box{margin-top:14px;border:1px solid #22372d;border-radius:18px;padding:14px}.tool-box h4{margin:0 0 12px}.range{margin:14px 0}.range label{display:flex;justify-content:space-between;color:#bcc9c1;font-size:12px}.range input{width:100%;accent-color:var(--accent)}
+    .preset-row{display:flex;gap:8px;overflow:auto}.preset{min-width:92px;height:78px;border:1px solid #31463a;border-radius:14px;background:#111d17;color:#fff}.preset.on{border-color:var(--accent);color:var(--accent)}
+    .export-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.select-card{padding:12px;border:1px solid #30463a;border-radius:14px;background:#0e1914;color:#fff;text-align:center}.select-card.on{border-color:var(--accent);background:#173c27;color:var(--accent)}
+    .settings-list{display:grid;gap:10px}.setting{display:flex;justify-content:space-between;align-items:center;padding:16px;border:1px solid var(--line);border-radius:18px;background:#0d1812}.setting small{color:var(--muted);display:block;margin-top:3px}.toggle{width:50px;height:28px;border-radius:30px;background:#304139;position:relative;cursor:pointer}.toggle:after{content:"";position:absolute;width:22px;height:22px;border-radius:50%;background:#fff;top:3px;right:3px;transition:.2s}.toggle.on{background:var(--accent)}.toggle.on:after{right:25px}
+    .toast{position:fixed;z-index:120;left:50%;bottom:96px;transform:translateX(-50%) translateY(20px);opacity:0;pointer-events:none;background:#15241c;border:1px solid #2e5b43;color:#fff;padding:12px 18px;border-radius:14px;transition:.25s}.toast.show{opacity:1;transform:translateX(-50%)}
+    @media(max-width:850px){.app{padding:12px 12px 100px}.hero{grid-template-columns:1fr}.hero-side{display:none}.hero-main{min-height:230px;padding:22px}.hero h2{font-size:29px}.grid{grid-template-columns:1fr 1fr}.template-row,.project-grid{grid-template-columns:1fr 1fr}.editor{display:block;overflow:auto}.editor-stage{padding:10px;min-height:58vh}.canvas-wrap canvas{max-height:55vh}.editor-panel{border-right:0;border-top:1px solid #24372e;padding-bottom:110px}.tool-tabs{position:sticky;top:0;background:#0b1510;padding:8px 0;z-index:4}}
+    @media(max-width:460px){.grid{grid-template-columns:1fr}.hero h2{font-size:25px}.sheet-panel{border-radius:22px 22px 0 0}.row2{grid-template-columns:1fr 1fr}.editor-head h3{font-size:15px}}
+  </style>
+</head>
+<body>
+<div id="splash" class="splash">
+  <div class="splash-card">
+    <img class="splash-logo" src="./assets/icon.svg" alt="تلا">
+    <h1>تِلا</h1>
+    <p>مولد تصاميم التلاوات القرآنية</p>
+  </div>
+</div>
+
+<div class="app">
+  <header class="topbar">
+    <div class="brand"><img src="./assets/icon.svg" alt=""><div><strong>تِلا</strong><small>Quran Design Studio</small></div></div>
+    <button id="installBtn" class="icon-btn hidden" title="تثبيت التطبيق">↓</button>
+  </header>
+
+  <main>
+    <section id="homeView" class="view active">
+      <div class="hero">
+        <div class="hero-main">
+          <div class="eyebrow">استوديو تصميم قرآني</div>
+          <h2>حوّل التلاوة إلى تصميم<br>جاهز للنشر.</h2>
+          <p>أضف صورة القارئ، اختر السورة والآيات، ثم اترك لتِلا مهمة إنشاء الغلاف وصفحات الآيات بهوية متناسقة.</p>
+          <div class="hero-actions">
+            <button class="primary-btn" onclick="openWizard()">＋ تصميم جديد</button>
+            <button class="ghost-btn" onclick="showView('templates')">استعراض القوالب</button>
+          </div>
+        </div>
+        <div class="hero-side">
+          <div class="mini-stat"><span>قوالب مدمجة</span><b>6</b></div>
+          <div class="mini-stat"><span>المقاسات</span><b>3</b></div>
+          <div class="mini-stat"><span>التصدير</span><b>PNG</b></div>
+          <div class="mini-stat"><span>الحفظ</span><b>محلي</b></div>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="section-head"><h3>أدوات أساسية</h3></div>
+        <div class="grid">
+          <div class="feature"><i>◈</i><h4>تقسيم ذكي</h4><p>تقسيم الآيات تلقائيًا إلى صفحات واضحة بدل تصغير الخط بصورة مزعجة.</p></div>
+          <div class="feature"><i>◐</i><h4>تحرير الصورة</h4><p>تكبير وتحريك وسطوع وتباين وتمويه لصورة القارئ داخل الغلاف.</p></div>
+          <div class="feature"><i>⇩</i><h4>تصدير عالي الجودة</h4><p>بوست 1080×1350، ستوري 1080×1920، أو مربع 1080×1080.</p></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><h3>قوالب مقترحة</h3><button onclick="showView('templates')">عرض الكل</button></div>
+        <div id="homeTemplates" class="template-row"></div>
+      </section>
+
+      <section class="section">
+        <div class="section-head"><h3>آخر المشاريع</h3><button onclick="showView('projects')">عرض الكل</button></div>
+        <div id="recentProjects" class="project-grid"></div>
+      </section>
+    </section>
+
+    <section id="projectsView" class="view">
+      <div class="section-head"><h3>مشاريعي</h3><button onclick="openWizard()">＋ جديد</button></div>
+      <div id="projectsGrid" class="project-grid"></div>
+    </section>
+
+    <section id="templatesView" class="view">
+      <div class="section-head"><h3>القوالب</h3><span style="color:var(--muted);font-size:12px">يمكن تغيير القالب لاحقًا</span></div>
+      <div id="templatesGrid" class="template-row"></div>
+    </section>
+
+    <section id="settingsView" class="view">
+      <div class="section-head"><h3>الإعدادات</h3></div>
+      <div class="settings-list">
+        <div class="setting"><div><b>إظهار منطقة الأمان</b><small>تظهر داخل المحرر فقط ولا تدخل في الصورة.</small></div><div id="safeToggle" class="toggle"></div></div>
+        <div class="setting"><div><b>الحفظ التلقائي</b><small>يحفظ المشروع عند الضغط على حفظ داخل المحرر.</small></div><div id="autosaveToggle" class="toggle on"></div></div>
+        <div class="setting"><div><b>مسار حفظ Android</b><small>Pictures/Tila</small></div><span style="color:var(--accent)">جاهز</span></div>
+        <div class="setting"><div><b>مصدر النص القرآني</b><small>الرسم العثماني مع تخزين السور التي تم فتحها محليًا.</small></div><span style="color:var(--gold)">Quran Uthmani</span></div>
+        <div class="setting"><div><b>الإصدار</b><small>Tila 1.0.0</small></div><span>Web / Android</span></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<nav class="bottom-nav">
+  <button class="nav-btn active" data-view="home"><span>⌂</span><small>الرئيسية</small></button>
+  <button class="nav-btn" data-view="projects"><span>▣</span><small>المشاريع</small></button>
+  <button class="nav-btn" data-view="templates"><span>◇</span><small>القوالب</small></button>
+  <button class="nav-btn" data-view="settings"><span>⚙</span><small>الإعدادات</small></button>
+</nav>
+
+<div id="wizard" class="sheet hidden">
+  <div class="sheet-panel">
+    <div class="sheet-top"><h3 id="wizardTitle">تصميم جديد</h3><button class="icon-btn" onclick="closeWizard()">×</button></div>
+    <div class="stepper"><div class="step on"></div><div class="step"></div><div class="step"></div></div>
+    <div id="step1">
+      <div class="form-grid">
+        <div class="upload" id="uploadBox"><img id="uploadPreview" class="hidden" alt=""><div class="placeholder"><div style="font-size:32px">＋</div><b>أضف صورة القارئ</b><div style="font-size:11px;margin-top:6px">JPG أو PNG</div></div><input id="readerFile" type="file" accept="image/*"></div>
+        <div class="field"><label>اسم القارئ</label><input id="readerName" placeholder="مثال: القارئ عيسى سناكو"></div>
+        <div class="field"><label>عنوان التلاوة</label><input id="recitationTitle" value="تلاوة جميلة"></div>
+        <button class="primary-btn" onclick="nextStep(2)">التالي</button>
+      </div>
+    </div>
+    <div id="step2" class="hidden">
+      <div class="form-grid">
+        <div class="field"><label>السورة</label><select id="surahSelect"><option>جاري تحميل السور...</option></select></div>
+        <div class="row2">
+          <div class="field"><label>من الآية</label><input id="fromAyah" type="number" min="1" value="1"></div>
+          <div class="field"><label>إلى الآية</label><input id="toAyah" type="number" min="1" value="5"></div>
+        </div>
+        <div class="notice" id="verseInfo">اختر السورة ونطاق الآيات.</div>
+        <div id="versePreview" class="verse-preview">سيظهر النص هنا للمعاينة.</div>
+        <div class="row2"><button class="ghost-btn" onclick="nextStep(1)">السابق</button><button class="primary-btn" onclick="nextStep(3)">التالي</button></div>
+      </div>
+    </div>
+    <div id="step3" class="hidden">
+      <div class="form-grid">
+        <div><label style="font-size:12px;color:#b9c8bf">اختر القالب</label><div id="wizardTemplates" class="preset-row" style="margin-top:8px"></div></div>
+        <div><label style="font-size:12px;color:#b9c8bf">المقاس</label><div id="formatCards" class="export-grid" style="margin-top:8px">
+          <button class="select-card on" data-format="post">بوست<br><small>1080×1350</small></button>
+          <button class="select-card" data-format="story">ستوري<br><small>1080×1920</small></button>
+          <button class="select-card" data-format="square">مربع<br><small>1080×1080</small></button>
+        </div></div>
+        <div class="row2"><button class="ghost-btn" onclick="nextStep(2)">السابق</button><button class="primary-btn" onclick="createDesign()">إنشاء التصميم</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="editor" class="editor hidden">
+  <div class="editor-stage">
+    <div class="editor-head">
+      <button class="icon-btn" onclick="closeEditor()">←</button>
+      <h3 id="editorTitle">تحرير التصميم</h3>
+      <button class="primary-btn" onclick="saveProject()" style="min-height:42px;padding:0 18px">حفظ</button>
+    </div>
+    <div class="canvas-wrap"><canvas id="canvas" width="1080" height="1350"></canvas></div>
+    <div id="thumbs" class="thumbs"></div>
+  </div>
+
+  <aside class="editor-panel">
+    <div class="tool-tabs">
+      <button class="tool-tab on" data-tool="image">صورة</button>
+      <button class="tool-tab" data-tool="style">قالب</button>
+      <button class="tool-tab" data-tool="layout">تخطيط</button>
+      <button class="tool-tab" data-tool="export">تصدير</button>
+    </div>
+
+    <div id="tool-image" class="tool-box">
+      <h4>إعدادات صورة القارئ</h4>
+      <div class="range"><label><span>التكبير</span><b id="scaleVal">100%</b></label><input id="scaleRange" type="range" min="80" max="180" value="100"></div>
+      <div class="range"><label><span>الموقع الأفقي</span><b id="xVal">0</b></label><input id="xRange" type="range" min="-45" max="45" value="0"></div>
+      <div class="range"><label><span>الموقع العمودي</span><b id="yVal">0</b></label><input id="yRange" type="range" min="-45" max="45" value="0"></div>
+      <div class="range"><label><span>السطوع</span><b id="brightVal">100%</b></label><input id="brightRange" type="range" min="60" max="130" value="100"></div>
+      <div class="range"><label><span>التباين</span><b id="contrastVal">105%</b></label><input id="contrastRange" type="range" min="70" max="150" value="105"></div>
+      <div class="range"><label><span>تمويه الخلفية</span><b id="blurVal">0</b></label><input id="blurRange" type="range" min="0" max="6" value="0"></div>
+      <button class="ghost-btn" style="width:100%" onclick="resetImageControls()">تمركز تلقائي</button>
+    </div>
+
+    <div id="tool-style" class="tool-box hidden">
+      <h4>القالب والألوان</h4>
+      <div id="editorTemplates" class="preset-row"></div>
+      <div style="margin-top:14px" class="field"><label>لون الهوية</label><input id="accentColor" type="color" value="#20f27a" style="padding:5px"></div>
+    </div>
+
+    <div id="tool-layout" class="tool-box hidden">
+      <h4>التخطيط</h4>
+      <div class="settings-list">
+        <div class="setting"><div><b>منطقة الأمان</b><small>إرشادات داخل المحرر فقط</small></div><div id="editorSafeToggle" class="toggle"></div></div>
+        <div class="setting"><div><b>ترقيم الصفحات</b><small>1 / 3 أسفل صفحة الآيات</small></div><div id="pageNumberToggle" class="toggle on"></div></div>
+        <div class="setting"><div><b>زخرفة خفيفة</b><small>نمط هندسي منخفض الشفافية</small></div><div id="ornamentToggle" class="toggle on"></div></div>
+      </div>
+    </div>
+
+    <div id="tool-export" class="tool-box hidden">
+      <h4>التصدير والحفظ</h4>
+      <div class="notice">في تطبيق Android تُحفظ الصور مباشرة داخل <b>Pictures/Tila</b>.</div>
+      <div style="display:grid;gap:8px;margin-top:12px">
+        <button class="primary-btn" onclick="exportCurrent()">حفظ الصورة الحالية</button>
+        <button class="ghost-btn" onclick="exportAll()">حفظ جميع الصور</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+(function(){
+  "use strict";
+  var API="https://api.alquran.cloud/v1";
+  var deferredInstall=null;
+  var currentStep=1,currentPage=0,pages=[],surahAyahs=[];
+  var state={
+    readerImage:"",readerName:"",title:"تلاوة جميلة",surahNo:1,surahName:"الفاتحة",from:1,to:5,
+    template:"cinematic",format:"post",scale:100,x:0,y:0,brightness:100,contrast:105,blur:0,
+    accent:"#20f27a",safe:false,pageNumbers:true,ornament:true,projectId:null
+  };
+  var templates={
+    cinematic:{name:"سينمائي",bg:"#050706",surface:"#101512",accent:"#20f27a",gold:"#f1cf75",soft:"#173827"},
+    emerald:{name:"زمرد",bg:"#04120d",surface:"#0c2117",accent:"#3cff9a",gold:"#bfe9ce",soft:"#0e4730"},
+    gold:{name:"ذهبي",bg:"#100d07",surface:"#1c160d",accent:"#e5bd64",gold:"#ffe2a0",soft:"#5b431b"},
+    midnight:{name:"أزرق ليلي",bg:"#06101a",surface:"#0d1a28",accent:"#47c8ff",gold:"#d8efff",soft:"#12384b"},
+    burgundy:{name:"عنابي",bg:"#14080b",surface:"#241015",accent:"#ef6d88",gold:"#f3d3b2",soft:"#51212b"},
+    ivory:{name:"نور",bg:"#eee8da",surface:"#f8f4ea",accent:"#28664b",gold:"#9a7938",soft:"#d7ccba",light:true}
+  };
+  var dims={post:[1080,1350],story:[1080,1920],square:[1080,1080]};
+  var el=function(id){return document.getElementById(id)};
+  function toast(msg){var t=el("toast");t.textContent=msg;t.classList.add("show");setTimeout(function(){t.classList.remove("show")},2200)}
+  window.showView=function(name){
+    document.querySelectorAll(".view").forEach(function(v){v.classList.remove("active")});
+    el(name+"View").classList.add("active");
+    document.querySelectorAll(".nav-btn").forEach(function(b){b.classList.toggle("active",b.dataset.view===name)});
+    if(name==="projects") renderProjects();
+  };
+  document.querySelectorAll(".nav-btn").forEach(function(b){b.onclick=function(){showView(b.dataset.view)}});
+
+  function templateCards(target,clickMode){
+    var host=el(target);host.innerHTML="";
+    Object.keys(templates).forEach(function(k){
+      var t=templates[k],btn=document.createElement("button");
+      if(clickMode==="card"){btn.className="template-card";btn.innerHTML='<div class="art" style="--glow:'+t.soft+'"></div><div class="copy"><b>'+t.name+'</b><small>قالب تِلا</small></div>';btn.onclick=function(){state.template=k;state.accent=t.accent;openWizard();nextStep(3)}}
+      else{btn.className="preset"+(state.template===k?" on":"");btn.innerHTML="<b>"+t.name+"</b>";btn.onclick=function(){state.template=k;state.accent=t.accent;el("accentColor").value=t.accent;templateCards("editorTemplates","preset");templateCards("wizardTemplates","preset");renderPage()}}
+      host.appendChild(btn);
+    });
+  }
+  templateCards("homeTemplates","card");templateCards("templatesGrid","card");templateCards("wizardTemplates","preset");templateCards("editorTemplates","preset");
+
+  window.openWizard=function(){
+    el("wizard").classList.remove("hidden");
+    nextStep(1);
+    loadSurahs();
+  };
+  window.closeWizard=function(){el("wizard").classList.add("hidden")};
+  window.nextStep=function(n){
+    if(n===2 && !el("readerFile").files.length && !state.readerImage){toast("أضف صورة القارئ أولًا");return}
+    if(n===2 && !el("readerName").value.trim()){toast("اكتب اسم القارئ");return}
+    currentStep=n;
+    ["step1","step2","step3"].forEach(function(id,i){el(id).classList.toggle("hidden",i!==n-1)});
+    document.querySelectorAll(".step").forEach(function(s,i){s.classList.toggle("on",i<=n-1)});
+    if(n===2) updateVersePreview();
+  };
+
+  async function compressImage(file){
+    return new Promise(function(resolve,reject){
+      var fr=new FileReader();fr.onload=function(){
+        var img=new Image();img.onload=function(){
+          var max=1200,scale=Math.min(1,max/Math.max(img.width,img.height)),c=document.createElement("canvas");
+          c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);
+          c.getContext("2d").drawImage(img,0,0,c.width,c.height);
+          resolve(c.toDataURL("image/jpeg",0.88));
+        };img.onerror=reject;img.src=fr.result;
+      };fr.onerror=reject;fr.readAsDataURL(file);
+    });
+  }
+  el("readerFile").onchange=async function(){
+    if(!this.files[0])return;
+    try{state.readerImage=await compressImage(this.files[0]);el("uploadPreview").src=state.readerImage;el("uploadPreview").classList.remove("hidden")}catch(e){toast("تعذر قراءة الصورة")}
+  };
+
+  async function loadSurahs(){
+    if(el("surahSelect").dataset.loaded)return;
+    var list=null;
+    try{list=JSON.parse(localStorage.getItem("tila_surahs")||"null")}catch(e){}
+    if(!list){
+      try{var r=await fetch(API+"/surah");var j=await r.json();list=j.data;localStorage.setItem("tila_surahs",JSON.stringify(list))}catch(e){el("surahSelect").innerHTML="<option>تعذر تحميل السور</option>";return}
+    }
+    el("surahSelect").innerHTML="";
+    list.forEach(function(s){var o=document.createElement("option");o.value=s.number;o.textContent=s.number+" — "+s.name+" · "+s.numberOfAyahs+" آية";o.dataset.name=s.name;o.dataset.count=s.numberOfAyahs;el("surahSelect").appendChild(o)});
+    el("surahSelect").dataset.loaded="1";
+    el("surahSelect").value=state.surahNo;
+    updateLimits();
+  }
+  function updateLimits(){
+    var o=el("surahSelect").selectedOptions[0];if(!o)return;
+    var max=Number(o.dataset.count||286);el("fromAyah").max=max;el("toAyah").max=max;
+    if(Number(el("toAyah").value)>max)el("toAyah").value=max;
+    state.surahNo=Number(o.value);state.surahName=o.dataset.name||o.textContent;
+  }
+  el("surahSelect").onchange=function(){updateLimits();updateVersePreview()};
+  el("fromAyah").oninput=updateVersePreview;el("toAyah").oninput=updateVersePreview;
+
+  async function getSurah(no){
+    var key="tila_surah_"+no;
+    try{var cached=JSON.parse(localStorage.getItem(key)||"null");if(cached)return cached}catch(e){}
+    var r=await fetch(API+"/surah/"+no+"/quran-uthmani");var j=await r.json();
+    if(!j.data||!j.data.ayahs)throw new Error("quran");
+    try{localStorage.setItem(key,JSON.stringify(j.data.ayahs))}catch(e){}
+    return j.data.ayahs;
+  }
+  async function updateVersePreview(){
+    updateLimits();
+    var from=Math.max(1,Number(el("fromAyah").value||1)),to=Math.max(from,Number(el("toAyah").value||from));
+    el("versePreview").textContent="جاري تحميل الآيات...";
+    try{
+      var a=await getSurah(state.surahNo),part=a.slice(from-1,to);
+      el("versePreview").textContent=part.map(function(v){return v.text+" ۝"+arabicNum(v.numberInSurah)}).join(" ");
+      el("verseInfo").textContent=part.length+" آيات · سيحدد تِلا عدد الصفحات تلقائيًا";
+    }catch(e){el("versePreview").textContent="تعذر تحميل النص. تحقق من الإنترنت وحاول مرة أخرى.";el("verseInfo").innerHTML='<span class="danger">تعذر تحميل السورة.</span>'}
+  }
+
+  document.querySelectorAll("#formatCards .select-card").forEach(function(b){b.onclick=function(){document.querySelectorAll("#formatCards .select-card").forEach(function(x){x.classList.remove("on")});b.classList.add("on");state.format=b.dataset.format}});
+  function arabicNum(n){return String(n).replace(/\d/g,function(d){return "٠١٢٣٤٥٦٧٨٩"[d]})}
+
+  window.createDesign=async function(){
+    state.readerName=el("readerName").value.trim();state.title=el("recitationTitle").value.trim()||"تلاوة جميلة";
+    state.from=Math.max(1,Number(el("fromAyah").value||1));state.to=Math.max(state.from,Number(el("toAyah").value||state.from));
+    updateLimits();
+    toast("جاري إنشاء التصميم...");
+    try{
+      var all=await getSurah(state.surahNo);surahAyahs=all.slice(state.from-1,state.to);
+      pages=[{type:"cover"}].concat(paginate(surahAyahs).map(function(x){return {type:"quran",ayahs:x}}));
+      currentPage=0;closeWizard();openEditor();renderPage();
+    }catch(e){toast("تعذر إنشاء التصميم")}
+  };
+  function paginate(arr){
+    var limit=state.format==="story"?820:(state.format==="square"?420:560),groups=[],g=[],count=0;
+    arr.forEach(function(a){
+      var weight=(a.text||"").length+12;
+      if(g.length && count+weight>limit){groups.push(g);g=[];count=0}
+      g.push(a);count+=weight;
+    });
+    if(g.length)groups.push(g);return groups;
+  }
+
+  function openEditor(){el("editor").classList.remove("hidden");document.body.style.overflow="hidden";renderThumbs()}
+  window.closeEditor=function(){el("editor").classList.add("hidden");document.body.style.overflow="";renderRecent()};
+  function renderThumbs(){
+    var host=el("thumbs");host.innerHTML="";
+    pages.forEach(function(p,i){var b=document.createElement("button");b.className=i===currentPage?"on":"";b.textContent=i===0?"الغلاف":String(i);b.onclick=function(){currentPage=i;renderPage();renderThumbs()};host.appendChild(b)})
+  }
+
+  function loadReaderImage(){
+    return new Promise(function(resolve){var img=new Image();img.onload=function(){resolve(img)};img.src=state.readerImage});
+  }
+  async function renderPage(){
+    if(!pages.length)return;
+    var c=el("canvas"),d=dims[state.format];c.width=d[0];c.height=d[1];
+    var ctx=c.getContext("2d"),t=templates[state.template]||templates.cinematic;
+    if(pages[currentPage].type==="cover"){var img=await loadReaderImage();drawCover(ctx,c.width,c.height,t,img)}else drawQuran(ctx,c.width,c.height,t,pages[currentPage].ayahs,currentPage,pages.length-1);
+    if(state.safe)drawSafe(ctx,c.width,c.height);
+    renderThumbs();
+  }
+  function roundedRect(ctx,x,y,w,h,r){ctx.beginPath();ctx.roundRect(x,y,w,h,r);ctx.closePath()}
+  function fillBg(ctx,w,h,t){
+    var g=ctx.createLinearGradient(0,0,w,h);g.addColorStop(0,t.surface);g.addColorStop(.65,t.bg);g.addColorStop(1,"#020403");ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+    var rg=ctx.createRadialGradient(w*.78,h*.12,20,w*.78,h*.12,w*.62);rg.addColorStop(0,hexAlpha(state.accent,.18));rg.addColorStop(1,"rgba(0,0,0,0)");ctx.fillStyle=rg;ctx.fillRect(0,0,w,h);
+  }
+  function hexAlpha(hex,a){var h=hex.replace("#",""),r=parseInt(h.substring(0,2),16),g=parseInt(h.substring(2,4),16),b=parseInt(h.substring(4,6),16);return "rgba("+r+","+g+","+b+","+a+")"}
+  function drawReader(ctx,img,w,h){
+    var base=Math.max(w/img.width,h/img.height),s=base*(state.scale/100),dw=img.width*s,dh=img.height*s,dx=(w-dw)/2+(state.x/100)*w,dy=(h-dh)/2+(state.y/100)*h;
+    ctx.save();ctx.filter="brightness("+state.brightness+"%) contrast("+state.contrast+"%) blur("+state.blur+"px)";ctx.drawImage(img,dx,dy,dw,dh);ctx.restore();
+  }
+  function drawOrnament(ctx,w,h,t){
+    if(!state.ornament)return;ctx.save();ctx.strokeStyle=hexAlpha(t.gold,.14);ctx.lineWidth=2;
+    var m=46,s=34;for(var x=m;x<w-m;x+=s){ctx.beginPath();ctx.moveTo(x,m);ctx.lineTo(x+s/2,m+16);ctx.lineTo(x,m+32);ctx.stroke()}
+    ctx.strokeRect(m,m,w-m*2,h-m*2);ctx.restore();
+  }
+  function drawCover(ctx,w,h,t,img){
+    fillBg(ctx,w,h,t);drawReader(ctx,img,w,h);
+    var grad=ctx.createLinearGradient(0,h*.25,0,h);grad.addColorStop(0,"rgba(0,0,0,0)");grad.addColorStop(.58,"rgba(0,0,0,.46)");grad.addColorStop(1,"rgba(0,0,0,.95)");ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);
+    drawOrnament(ctx,w,h,t);
+    var pad=w*.075,baseY=h*.72;
+    ctx.direction="rtl";ctx.textAlign="right";ctx.fillStyle=state.accent;ctx.fillRect(w-pad-12,baseY-22,12,176);
+    ctx.font="800 "+Math.round(w*.068)+'px "Noto Kufi Arabic"';ctx.fillStyle=state.accent;ctx.fillText(state.title,w-pad-38,baseY+28);
+    ctx.font="600 "+Math.round(w*.031)+'px "Noto Kufi Arabic"';ctx.fillStyle="#fff";ctx.fillText(state.readerName,w-pad-38,baseY+92);
+    ctx.font="500 "+Math.round(w*.022)+'px "Noto Kufi Arabic"';ctx.fillStyle="#d2dbd6";ctx.fillText("سورة "+cleanSurah(state.surahName)+" · الآيات "+arabicNum(state.from)+"–"+arabicNum(state.to),w-pad-38,baseY+140);
+    ctx.textAlign="left";ctx.fillStyle=t.gold;ctx.font="700 "+Math.round(w*.021)+'px "Noto Kufi Arabic"';ctx.fillText("تِلا",pad,h-pad*.7);
+  }
+  function cleanSurah(s){return String(s||"").replace("سُورَةُ ","").replace("سورة ","")}
+  function wrapRtl(ctx,text,maxW){
+    var words=text.split(/\s+/),lines=[],line="";
+    words.forEach(function(word){var test=line?line+" "+word:word;if(ctx.measureText(test).width>maxW&&line){lines.push(line);line=word}else line=test});if(line)lines.push(line);return lines;
+  }
+  function drawQuran(ctx,w,h,t,ayahs,index,total){
+    fillBg(ctx,w,h,t);drawOrnament(ctx,w,h,t);ctx.direction="rtl";ctx.textAlign="center";
+    var headY=h*.115;ctx.font="700 "+Math.round(w*.052)+'px "Noto Kufi Arabic"';ctx.fillStyle=t.gold;ctx.fillText("سورة "+cleanSurah(state.surahName),w/2,headY);
+    ctx.fillStyle=state.accent;ctx.fillRect(w*.42,headY+30,w*.16,5);
+    var qFont=state.format==="story"?54:(state.format==="square"?45:49),lineH=qFont*1.9,maxW=w*.78;
+    ctx.font=qFont+'px "Amiri Quran", serif';ctx.fillStyle=t.light?"#15231b":"#f4f3ee";
+    var all=ayahs.map(function(a){return a.text+" ۝"+arabicNum(a.numberInSurah)}).join(" ");
+    var lines=wrapRtl(ctx,all,maxW),available=h*.56,needed=lines.length*lineH;
+    while(needed>available&&qFont>38){qFont-=2;lineH=qFont*1.9;ctx.font=qFont+'px "Amiri Quran", serif';lines=wrapRtl(ctx,all,maxW);needed=lines.length*lineH}
+    var start=Math.max(h*.25,h*.25+(available-needed)/2);lines.forEach(function(line,i){ctx.fillText(line,w/2,start+i*lineH)});
+    var foot=h*.88;ctx.font="700 "+Math.round(w*.027)+'px "Noto Kufi Arabic"';ctx.fillStyle=t.light?"#183426":"#fff";ctx.fillText(state.readerName,w/2,foot);
+    ctx.font="500 "+Math.round(w*.019)+'px "Noto Kufi Arabic"';ctx.fillStyle=t.light?"#51645a":"#aebbb4";ctx.fillText("سورة "+cleanSurah(state.surahName)+" · من "+arabicNum(state.from)+" إلى "+arabicNum(state.to),w/2,foot+48);
+    if(state.pageNumbers){ctx.textAlign="left";ctx.fillStyle=state.accent;ctx.font="700 "+Math.round(w*.019)+'px "Noto Kufi Arabic"';ctx.fillText(arabicNum(index)+" / "+arabicNum(total),w*.08,h*.94)}
+  }
+  function drawSafe(ctx,w,h){ctx.save();ctx.setLineDash([16,14]);ctx.strokeStyle="rgba(32,242,122,.42)";ctx.lineWidth=2;ctx.strokeRect(w*.06,h*.06,w*.88,h*.88);ctx.restore()}
+
+  document.querySelectorAll(".tool-tab").forEach(function(b){b.onclick=function(){document.querySelectorAll(".tool-tab").forEach(function(x){x.classList.remove("on")});b.classList.add("on");["image","style","layout","export"].forEach(function(k){el("tool-"+k).classList.toggle("hidden",k!==b.dataset.tool)})}});
+  function bindRange(id,key,label,suffix){
+    el(id).oninput=function(){state[key]=Number(this.value);if(label)el(label).textContent=this.value+(suffix||"");renderPage()}
+  }
+  bindRange("scaleRange","scale","scaleVal","%");bindRange("xRange","x","xVal","");bindRange("yRange","y","yVal","");bindRange("brightRange","brightness","brightVal","%");bindRange("contrastRange","contrast","contrastVal","%");bindRange("blurRange","blur","blurVal","");
+  window.resetImageControls=function(){state.scale=100;state.x=0;state.y=0;state.brightness=100;state.contrast=105;state.blur=0;["scale","x","y","bright","contrast","blur"].forEach(function(n){var r=el(n+"Range");if(r){var map={scale:100,x:0,y:0,bright:100,contrast:105,blur:0};r.value=map[n];r.dispatchEvent(new Event("input"))}})};
+  el("accentColor").oninput=function(){state.accent=this.value;renderPage()};
+  function toggleBind(id,key){el(id).onclick=function(){state[key]=!state[key];this.classList.toggle("on",state[key]);if(el("editor"+id.charAt(0).toUpperCase()+id.slice(1))){}renderPage()}}
+  toggleBind("safeToggle","safe");toggleBind("editorSafeToggle","safe");toggleBind("pageNumberToggle","pageNumbers");toggleBind("ornamentToggle","ornament");
+
+  function canvasName(i){return "Tila_"+state.surahNo+"_"+state.from+"-"+state.to+"_"+(i===0?"cover":"page-"+i)+".png"}
+  function saveDataUrl(data,name){
+    if(window.AndroidBridge&&typeof window.AndroidBridge.saveImage==="function"){window.AndroidBridge.saveImage(data,name);return}
+    var a=document.createElement("a");a.href=data;a.download=name;document.body.appendChild(a);a.click();a.remove();
+  }
+  window.exportCurrent=function(){renderPage().then(function(){saveDataUrl(el("canvas").toDataURL("image/png"),canvasName(currentPage));toast("تم تجهيز الصورة")})};
+  window.exportAll=async function(){
+    var old=currentPage;
+    for(var i=0;i<pages.length;i++){currentPage=i;await renderPage();saveDataUrl(el("canvas").toDataURL("image/png"),canvasName(i));await new Promise(function(r){setTimeout(r,180)})}
+    currentPage=old;await renderPage();toast("تم تصدير جميع الصور");
+  };
+
+  function getProjects(){try{return JSON.parse(localStorage.getItem("tila_projects")||"[]")}catch(e){return []}}
+  window.saveProject=function(){
+    var list=getProjects(),copy=JSON.parse(JSON.stringify(state));copy.savedAt=Date.now();copy.projectId=copy.projectId||("p"+Date.now());
+    state.projectId=copy.projectId;
+    var idx=list.findIndex(function(x){return x.projectId===copy.projectId});if(idx>=0)list[idx]=copy;else list.unshift(copy);
+    try{localStorage.setItem("tila_projects",JSON.stringify(list.slice(0,12)));toast("تم حفظ المشروع")}catch(e){toast("مساحة الحفظ ممتلئة")}
+    renderProjects();renderRecent();
+  };
+  window.openProject=async function(id){
+    var p=getProjects().find(function(x){return x.projectId===id});if(!p)return;state=Object.assign(state,p);
+    surahAyahs=(await getSurah(state.surahNo)).slice(state.from-1,state.to);pages=[{type:"cover"}].concat(paginate(surahAyahs).map(function(x){return {type:"quran",ayahs:x}}));currentPage=0;openEditor();renderPage();
+  };
+  window.deleteProject=function(id){
+    var list=getProjects().filter(function(x){return x.projectId!==id});localStorage.setItem("tila_projects",JSON.stringify(list));renderProjects();renderRecent();toast("تم حذف المشروع");
+  };
+  function projectHtml(p){
+    return '<div class="project-card"><div class="project-thumb">تِلا</div><div class="project-meta"><b>سورة '+cleanSurah(p.surahName)+'</b><small>'+p.readerName+' · '+arabicNum(p.from)+'–'+arabicNum(p.to)+'</small><div class="project-actions"><button onclick="openProject(\''+p.projectId+'\')">فتح</button><button onclick="deleteProject(\''+p.projectId+'\')">حذف</button></div></div></div>';
+  }
+  function renderProjects(){var list=getProjects();el("projectsGrid").innerHTML=list.length?list.map(projectHtml).join(""):'<div class="empty" style="grid-column:1/-1">لا توجد مشاريع محفوظة بعد.</div>'}
+  function renderRecent(){var list=getProjects().slice(0,4);el("recentProjects").innerHTML=list.length?list.map(projectHtml).join(""):'<div class="empty" style="grid-column:1/-1">ابدأ أول تصميم وسيظهر هنا.</div>'}
+  renderProjects();renderRecent();
+
+  window.addEventListener("beforeinstallprompt",function(e){e.preventDefault();deferredInstall=e;el("installBtn").classList.remove("hidden")});
+  el("installBtn").onclick=async function(){if(!deferredInstall)return;deferredInstall.prompt();await deferredInstall.userChoice;deferredInstall=null;this.classList.add("hidden")};
+  if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("./sw.js").catch(function(){})})}
+  window.addEventListener("load",function(){setTimeout(function(){el("splash").classList.add("done")},1150)});
+})();
+</script>
+</body>
+</html>
